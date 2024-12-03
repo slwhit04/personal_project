@@ -40,20 +40,27 @@
             text-decoration: underline;
         }
                 }
-        .image-container {
+ }
+        .text-container {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             gap: 20px;
             margin-top: 20px;
         }
-        .image-container img {
-            width: 150px;
-            height: 150px;
-            border: 2px solid transparent;
+        .text-block {
+            padding: 15px;
+            background-color: lightgray;
+            width: 300px;
+            text-align: center;
             cursor: pointer;
+            border: 2px solid transparent;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
-        .image-container img.selected {
-            border-color: #FF5733; /* Highlight selected image */
+        .text-block:hover {
+            background-color: #ffcc00;
+        }
+        .text-block.selected {
+            border-color: #FF5733; /* Highlight selected text block */
         }
         .select-button {
             margin-top: 20px;
@@ -71,16 +78,14 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>What should I wear?</h1>
-    </div>
+    <h1>Select a Text Block</h1>
 
-    <!-- Image Selection -->
-    <div class="image-container">
-        <img src="images/beach.jpg" alt="Image 1" class="image-option" data-page="page4.html">
-        <img src="images/cruise.jpg" alt="Image 2" class="image-option" data-page="page4.html">
-        <img src="images/pool.jpg" alt="Image 3" class="image-option" data-page="page4.html">
-        <img src="images/room.jpg" alt="Image 4" class="image-option" data-page="page4.html">
+    <!-- Text Selection -->
+    <div class="text-container">
+        <div class="Nothing" data-page="page5.html">Text Block 1</div>
+        <div class="a dress" data-page="page6.html">Text Block 2</div>
+        <div class="a casual fit" data-page="page7.html">Text Block 3</div>
+        <div class="pajamas" data-page="page7.html">Text Block 4</div>
     </div>
 
     <!-- Button to proceed to the next page -->
@@ -89,26 +94,26 @@
     </a>
 
     <script>
-        // Get all image options and the button
-        const imageOptions = document.querySelectorAll('.image-option');
+        // Get all text block elements and the button
+        const textBlocks = document.querySelectorAll('.text-block');
         const proceedButton = document.getElementById('proceedButton');
         const proceedLink = document.getElementById('proceedLink');
 
-        // Track the selected image
-        let selectedImage = null;
+        // Track the selected text block
+        let selectedText = null;
 
-        // Event listener for each image
-        imageOptions.forEach(img => {
-            img.addEventListener('click', function() {
-                // Remove the 'selected' class from all images
-                imageOptions.forEach(image => image.classList.remove('selected'));
+        // Event listener for each text block
+        textBlocks.forEach(block => {
+            block.addEventListener('click', function() {
+                // Remove the 'selected' class from all text blocks
+                textBlocks.forEach(text => text.classList.remove('selected'));
 
-                // Add the 'selected' class to the clicked image
+                // Add the 'selected' class to the clicked text block
                 this.classList.add('selected');
 
-                // Set the selected image's data-page attribute as the link's href
-                selectedImage = this.getAttribute('data-page');
-                proceedLink.href = selectedImage;
+                // Set the selected text block's data-page attribute as the link's href
+                selectedText = this.getAttribute('data-page');
+                proceedLink.href = selectedText;
 
                 // Enable the button after a selection
                 proceedButton.disabled = false;
