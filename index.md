@@ -3,6 +3,6 @@ layout: default
 title: Welcome to My Website
 ---
 
-# Welcome to My Website
+# Hi Ridge!
 
-This is the homepage of my second website!
+I know its a little early to ask this.. but... will you be my New Year's Kiss? ( •̯́ ^ •̯̀)
