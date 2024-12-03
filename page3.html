@@ -44,10 +44,47 @@
 <body>
     <div class="container">
         <h1>Where should we have our kiss?</h1>
-        <a href="page4.html">By the Beach</a>
-        <a href="page4.html">In our Room</a>
-        <a href="page4.html">In the Pool</a>
-        <a href="page4.html">On the Deck</a>
     </div>
+
+    <!-- Image Selection -->
+    <div class="image-container">
+        <img src="images/beach.jpg" alt="Image 1" class="image-option" data-page="page4.html">
+        <img src="images/cruise.jpg" alt="Image 2" class="image-option" data-page="page4.html">
+        <img src="images/pool.jpg" alt="Image 3" class="image-option" data-page="page4.html">
+        <img src="images/room.jpg" alt="Image 4" class="image-option" data-page="page4.html">
+    </div>
+
+    <!-- Button to proceed to the next page -->
+    <a href="#" id="proceedLink">
+        <button class="select-button" id="proceedButton" disabled>Select and Proceed</button>
+    </a>
+
+    <script>
+        // Get all image options and the button
+        const imageOptions = document.querySelectorAll('.image-option');
+        const proceedButton = document.getElementById('proceedButton');
+        const proceedLink = document.getElementById('proceedLink');
+
+        // Track the selected image
+        let selectedImage = null;
+
+        // Event listener for each image
+        imageOptions.forEach(img => {
+            img.addEventListener('click', function() {
+                // Remove the 'selected' class from all images
+                imageOptions.forEach(image => image.classList.remove('selected'));
+
+                // Add the 'selected' class to the clicked image
+                this.classList.add('selected');
+
+                // Set the selected image's data-page attribute as the link's href
+                selectedImage = this.getAttribute('data-page');
+                proceedLink.href = selectedImage;
+
+                // Enable the button after a selection
+                proceedButton.disabled = false;
+            });
+        });
+    </script>
 </body>
 </html>
